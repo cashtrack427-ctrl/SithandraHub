@@ -11,27 +11,40 @@
         body {
             background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
             margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
         }
-        .scanline {
-            width: 100%; height: 2px; background: rgba(0, 255, 65, 0.1);
-            position: fixed; top: 0; animation: scan 4s linear infinite;
-        }
-        @keyframes scan { from { top: 0; } to { top: 100%; } }
-        
-        .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.2); margin-bottom: 30px; }
-        
+
+        /* --- UI COMPONENTS --- */
+        .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.1); margin-bottom: 30px; position: relative; }
+        .menu-trigger { position: absolute; right: 15px; top: 15px; cursor: pointer; color: var(--g); font-size: 1.5rem; }
+
         .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; }
-        
         .card {
             background: #111; border: 1px solid #333; padding: 20px; border-radius: 4px;
             text-decoration: none; position: relative; transition: 0.3s;
             display: block; border-left: 6px solid #444;
         }
         .card:hover { transform: translateX(10px); background: #1a1a1a; box-shadow: -5px 0 15px currentColor; }
-
         .title { font-size: 1.2rem; font-weight: bold; display: block; margin-bottom: 5px; }
         .desc { font-size: 0.8rem; color: #aaa; line-height: 1.4; display: block; }
-        .date { font-size: 0.65rem; color: #666; position: absolute; top: 10px; right: 10px; }
+
+        /* --- SETTINGS DRAWER --- */
+        #settingsDrawer {
+            position: fixed; top: 0; right: -300px; width: 280px; height: 100%;
+            background: rgba(10, 10, 10, 0.98); border-left: 2px solid var(--g);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; padding: 30px 20px;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+        #settingsDrawer.open { right: 0; }
+        .drawer-overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.7); display:none; z-index: 999;
+        }
+        .close-btn { color: var(--r); font-size: 0.8rem; cursor: pointer; text-align: right; display: block; margin-bottom: 20px; }
+        
+        .setting-item { margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .setting-label { font-size: 0.7rem; color: #666; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .setting-val { color: var(--g); font-size: 0.9rem; }
 
         /* Project Theming */
         .shadows { color: var(--p); border-left-color: var(--p); }
@@ -39,53 +52,61 @@
         .array { color: var(--r); border-left-color: var(--r); }
         .shield { color: var(--g); border-left-color: var(--g); }
         .ayesha { color: var(--gold); border-left-color: var(--gold); }
-        .cortex { color: var(--p); border-left-color: var(--p); }
-        .lab { color: var(--b); border-left-color: var(--b); }
     </style>
 </head>
 <body>
-    <div class="scanline"></div>
+
     <div class="header">
-        <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA SCARFACE HUB</h1>
-        <code style="color: #666;">ROOT@BOTSWANA:~# SYSTEM_LIVE</code>
+        <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
+        <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA HUB</h1>
+        <code style="color: #666;">ROOT@PALAPYE:~# ONLINE</code>
     </div>
 
     <div class="grid">
-        <a href="shadows/" class="card shadows">
-            <span class="date">EST. 2021</span>
-            <span class="title">OUT OF SHADOWS</span>
-            <span class="desc">System Firmware & Foundational Philosophy. Rule the Narrative.</span>
-        </a>
-        <a href="pixels/" class="card pixels">
-            <span class="date">EST. 2023</span>
-            <span class="title">SITHANDRA PIXELS</span>
-            <span class="desc">Media Studio & Graphic Operations. Visual Dominance.</span>
-        </a>
-        <a href="array/" class="card array">
-            <span class="date">EST. 2023</span>
-            <span class="title">SITHANDRA ARRAY</span>
-            <span class="desc">Logic Processor & SMC/ICT Trading Strategies.</span>
-        </a>
-        <a href="shield/" class="card shield">
-            <span class="date">EST. 2023</span>
-            <span class="title">SCAR SHIELD X</span>
-            <span class="desc">Security Firewall & Mobile Encryption Vault.</span>
-        </a>
-        <a href="ayesha/" class="card ayesha">
-            <span class="date">EST. 2025</span>
-            <span class="title">AYESHA APEX TRADING</span>
-            <span class="desc">Retail Interface & Market Access Hub.</span>
-        </a>
-        <a href="cortex/" class="card cortex">
-            <span class="date">EST. 2026</span>
-            <span class="title">SITHANDRA CORTEX 5</span>
-            <span class="desc">Automation Kernel & AI Integration Logic.</span>
-        </a>
-        <a href="lab/" class="card lab">
-            <span class="date">EST. 2026</span>
-            <span class="title">SCAR CAPITAL LAB</span>
-            <span class="desc">Quantitative Research & R&D Development Wing.</span>
-        </a>
+        <a href="shadows/" class="card shadows"><span class="title">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
+        <a href="pixels/" class="card pixels"><span class="title">SITHANDRA PIXELS</span><span class="desc">Media Studio & Graphic Operations.</span></a>
+        <a href="array/" class="card array"><span class="title">SITHANDRA ARRAY</span><span class="desc">SMC/ICT Trading Strategies & Logic.</span></a>
+        <a href="shield/" class="card shield"><span class="title">SCAR SHIELD X</span><span class="desc">Security Firewall & Encryption Vault.</span></a>
+        <a href="ayesha/" class="card ayesha"><span class="title">AYESHA APEX</span><span class="desc">Retail Interface & Market Access.</span></a>
     </div>
+
+    <div class="drawer-overlay" id="overlay" onclick="toggleDrawer()"></div>
+    <div id="settingsDrawer">
+        <span class="close-btn" onclick="toggleDrawer()">[ CLOSE_X ]</span>
+        <h3 style="color:var(--g); border-bottom: 1px solid var(--g); padding-bottom: 5px;">SYS_SETTINGS</h3>
+        
+        <div class="setting-item">
+            <span class="setting-label">OPERATOR</span>
+            <span class="setting-val">SCARFACE</span>
+        </div>
+        <div class="setting-item">
+            <span class="setting-label">DEVICE_NODE</span>
+            <span class="setting-val">GALAXY_A15</span>
+        </div>
+        <div class="setting-item">
+            <span class="setting-label">ENCRYPTION</span>
+            <span class="setting-val" style="color:var(--g)">ACTIVE</span>
+        </div>
+        <div class="setting-item">
+            <span class="setting-label">LOCATION</span>
+            <span class="setting-val">PALAPYE, BW</span>
+        </div>
+        
+        <button onclick="location.reload()" style="background:transparent; border:1px solid var(--r); color:var(--r); width:100%; padding:10px; cursor:pointer;">REBOOT SYSTEM</button>
+    </div>
+
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('settingsDrawer');
+            const overlay = document.getElementById('overlay');
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                overlay.style.display = 'none';
+            } else {
+                drawer.classList.add('open');
+                overlay.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>

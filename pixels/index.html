@@ -1,38 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIXELS | SITHANDRA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITHANDRA PIXELS | MEDIA_STUDIO</title>
     <style>
-        :root { --b: #0077ff; --bg: #030303; --text: #f0f0f0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(0,119,255,0.1); }
-        .header { border-bottom: 1px solid var(--b); margin-bottom: 30px; padding-bottom: 10px; }
-        h1 { color: var(--b); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
-        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        :root { --b: #0077ff; --bg: #030303; --card: #0a0a0a; }
+        body {
+            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #1a1a1a; padding: 25px; box-shadow: 0 0 30px rgba(0,119,255,0.05); }
         
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; }
-        .pic-placeholder { height: 100px; background: rgba(0,119,255,0.05); border: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--b); font-size: 0.7rem; }
-        
-        .nav-btn { display: inline-block; border: 1px solid var(--b); color: var(--b); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-        .nav-btn:hover { background: var(--b); color: #000; }
-        
-        .status-dot { height: 8px; width: 8px; background-color: var(--b); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--b); }
+        .studio-header { border-left: 5px solid var(--b); padding-left: 15px; margin-bottom: 30px; }
+        h1 { color: var(--b); font-size: 1.6rem; margin: 0; letter-spacing: 2px; }
+        .tagline { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* Service Grid */
+        .services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .service-item { background: var(--card); border: 1px solid #222; padding: 10px; font-size: 0.75rem; color: var(--b); text-align: center; }
+
+        /* Portfolio Gallery */
+        .gallery-header { font-size: 0.9rem; border-bottom: 1px solid #222; padding-bottom: 5px; margin-top: 30px; color: #888; }
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .work-box { 
+            aspect-ratio: 1/1; background: #000; border: 1px dashed #333; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.3s; cursor: pointer;
+        }
+        .work-box:hover { border-color: var(--b); background: rgba(0,119,255,0.05); }
+        .work-box span { font-size: 0.6rem; color: #444; margin-top: 5px; }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--b); color: var(--b); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; margin-top: 30px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--b); color: #000; box-shadow: 0 0 15px var(--b); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><h1>SITHANDRA PIXELS</h1><div class="slogan">VISUAL DOMINANCE. EST 2023.</div></div>
-        <p>Sithandra Pixels is the media studio & design division. We focus on creating high-impact visual narratives, from graphic design to branding for mobile and secure systems.</p>
-        
-        <div class="gallery">
-            <div class="pic-placeholder">> BRANDING_KIT</div>
-            <div class="pic-placeholder">> VECTOR_GRAPHICS</div>
-            <div class="pic-placeholder">> UI_DESIGN</div>
-            <div class="pic-placeholder">> CONCEPT_ART</div>
+        <div class="studio-header">
+            <h1>SITHANDRA PIXELS</h1>
+            <div class="tagline">Visual Dominance & Graphic Ops</div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+        <p style="font-size: 0.85rem; color: #aaa;">"Converting complex data into visual narratives. Pixel-perfect execution for the Sithandra ecosystem."</p>
+
+        <div class="services">
+            <div class="service-item">[ LOGO_DESIGN ]</div>
+            <div class="service-item">[ UI_UX_MOBILE ]</div>
+            <div class="service-item">[ VECTOR_ILLUSTRATION ]</div>
+            <div class="service-item">[ BRAND_ARCHITECTURE ]</div>
+        </div>
+
+        <div class="gallery
+cat <<EOF > ~/SithandraHub/pixels/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITHANDRA PIXELS | MEDIA_STUDIO</title>
+    <style>
+        :root { --b: #0077ff; --bg: #030303; --card: #0a0a0a; }
+        body {
+            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #1a1a1a; padding: 25px; box-shadow: 0 0 30px rgba(0,119,255,0.05); }
+        
+        .studio-header { border-left: 5px solid var(--b); padding-left: 15px; margin-bottom: 30px; }
+        h1 { color: var(--b); font-size: 1.6rem; margin: 0; letter-spacing: 2px; }
+        .tagline { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* Service Grid */
+        .services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .service-item { background: var(--card); border: 1px solid #222; padding: 10px; font-size: 0.75rem; color: var(--b); text-align: center; }
+
+        /* Portfolio Gallery */
+        .gallery-header { font-size: 0.9rem; border-bottom: 1px solid #222; padding-bottom: 5px; margin-top: 30px; color: #888; }
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .work-box { 
+            aspect-ratio: 1/1; background: #000; border: 1px dashed #333; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.3s; cursor: pointer;
+        }
+        .work-box:hover { border-color: var(--b); background: rgba(0,119,255,0.05); }
+        .work-box span { font-size: 0.6rem; color: #444; margin-top: 5px; }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--b); color: var(--b); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; margin-top: 30px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--b); color: #000; box-shadow: 0 0 15px var(--b); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="studio-header">
+            <h1>SITHANDRA PIXELS</h1>
+            <div class="tagline">Visual Dominance & Graphic Ops</div>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #aaa;">"Converting complex data into visual narratives. Pixel-perfect execution for the Sithandra ecosystem."</p>
+
+        <div class="services">
+            <div class="service-item">[ LOGO_DESIGN ]</div>
+            <div class="service-item">[ UI_UX_MOBILE ]</div>
+            <div class="service-item">[ VECTOR_ILLUSTRATION ]</div>
+            <div class="service-item">[ BRAND_ARCHITECTURE ]</div>
+        </div>
+
+        <div class="gallery-header">> RECENT_COMMISSIONS</div>
+        <div class="gallery">
+            <div class="work-box">
+                <div style="color:var(--b)">[◈]</div>
+                <span>SCAR_SHIELD_LOGO</span>
+            </div>
+            <div class="work-box">
+                <div style="color:var(--b)">[◈]</div>
+                <span>ARRAY_INTERFACE</span>
+            </div>
+            <div class="work-box">
+                <div style="color:var(--b)">[◈]</div>
+                <span>BOOK_COVER_V1</span>
+            </div>
+            <div class="work-box">
+                <div style="color:var(--b)">[◈]</div>
+                <span>APEX_TRADING_UI</span>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="../" class="nav-btn">EXIT_STUDIO</a>
+            <span style="font-size: 0.6rem; color: #333; margin-top: 30px;">LOCATION: BOTSWANA_NODE</span>
+        </div>
     </div>
 </body>
 </html>

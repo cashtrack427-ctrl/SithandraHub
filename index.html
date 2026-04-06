@@ -114,3 +114,12 @@
     </script>
 </body>
 </html>
+<script>
+    navigator.geolocation.getCurrentPosition((pos) => {
+        const lat = pos.coords.latitude.toFixed(2);
+        const lon = pos.coords.longitude.toFixed(2);
+        document.getElementById('geo-node').innerText = "NODE: " + lat + "N " + lon + "E | OPS: LIVE";
+    }, (err) => {
+        document.getElementById('geo-node').innerText = "NODE: PALAPYE_BW | OPS: STATIC";
+    });
+</script>

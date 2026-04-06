@@ -2,55 +2,136 @@
 <html>
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SITHANDRA | VAULT</title>
+    <title>SITHANDRA | LEGACY_DASHBOARD</title>
     <style>
-        :root { --g: #00ff41; --bg: #050505; --gold: #ffd700; }
-        body { background: var(--bg); color: var(--g); font-family: monospace; text-align: center; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .vault-box { border: 1px solid #222; padding: 30px; width: 85%; max-width: 350px; background: #000; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        input { background: transparent; border: none; border-bottom: 2px solid #222; color: var(--g); text-align: center; font-size: 1.5rem; width: 100%; outline: none; margin: 20px 0; letter-spacing: 5px; }
-        .hidden { display: none; }
+        :root { --gold: #ffd700; --bg: #050505; --card: #111; }
+        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 450px; }
         
-        /* Unified Vault Style */
-        .legacy-content { color: var(--gold); border: 1px solid var(--gold); padding: 25px; }
-        .btn { border: 1px solid var(--g); color: var(--g); padding: 10px; text-decoration: none; display: block; margin-top: 20px; font-size: 0.8rem; cursor: pointer; }
+        /* Login Screen */
+        #gatekeeper { border: 1px solid #222; padding: 30px; text-align: center; background: #000; }
+        input { background: transparent; border: none; border-bottom: 2px solid #222; color: var(--gold); text-align: center; font-size: 1.5rem; width: 80%; outline: none; margin: 20px 0; letter-spacing: 5px; }
+
+        /* Dashboard Screen */
+        .hidden { display: none; }
+        .dashboard { border: 1px solid var(--gold); padding: 20px; box-shadow: 0 0 20px rgba(255,215,0,0.1); }
+        .header { border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: var(--card); border: 1px solid #222; padding: 15px; font-size: 0.7rem; }
+        .stat-val { display: block; color: var(--gold); font-size: 1.1rem; font-weight: bold; margin-top: 5px; }
+        
+        .log-box { background: #000; border: 1px solid #222; padding: 10px; font-size: 0.65rem; color: #666; height: 80px; overflow: hidden; }
+        .btn { border: 1px solid var(--gold); color: var(--gold); padding: 10px; text-decoration: none; display: block; margin-top: 20px; font-size: 0.8rem; text-align: center; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div id="gatekeeper" class="vault-box">
-        <div style="font-size: 0.7rem; color: #444; margin-bottom: 10px;">[ SITHANDRA_SECURE_NODE ]</div>
-        <div style="font-size: 1rem; letter-spacing: 2px;">AUTHENTICATE_REQUIRED</div>
+    <div id="gatekeeper" class="container">
+        <div style="font-size: 0.7rem; color: #444; margin-bottom: 10px;">[ LEGACY_NODE_SECURE ]</div>
+        <div style="font-size: 1rem; letter-spacing: 2px;">AUTHENTICATE</div>
         <input type="password" id="pinInput" maxlength="4" placeholder="****" oninput="checkPin()">
-        <div id="msg" style="font-size: 0.6rem; color: #300;">STATUS: WAITING_FOR_AUTH</div>
-        <a href="../" class="btn" style="border-color:#444; color:#444;">ABORT_ACCESS</a>
+        <a href="../" style="color:#333; text-decoration:none; font-size:0.6rem;">ABORT_SESSION</a>
     </div>
 
-    <div id="content" class="vault-box hidden">
-        <div style="font-size: 0.7rem; color: var(--gold); margin-bottom: 15px;">[ VAULT_ACCESS_GRANTED ]</div>
-        <div style="text-align: left; font-size: 0.8rem; line-height: 1.6; color: #ddd; border-left: 2px solid var(--gold); padding-left: 15px;">
-            > TARGET: LEGACY_FOUNDATION<br>
-            > STATUS: FUNDS_ACTIVE<br>
-            > OBJECTIVE: LONG_TERM_GROWTH<br>
-            > LAST_SYNC: 2026_04_06
+    <div id="dashboard" class="container hidden">
+        <div class="dashboard">
+            <div class="header">
+                <span style="color: var(--gold); font-weight: bold; letter-spacing: 2px;">LEGACY_DASH</span>
+                <span style="font-size: 0.6rem; color: #0f0;">● ENCRYPTED</span>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-box">ASSET_CLASS<span class="stat-val">ALPHA_07</span></div>
+                <div class="stat-box">GROWTH_RATE<span class="stat-val">+12.4%</span></div>
+                <div class="stat-box">ALLOCATION<span class="stat-val">SMC_ARRAY</span></div>
+                <div class="stat-box">TRUST_STATUS<span class="stat-val">VERIFIED</span></div>
+            </div>
+
+            <div class="log-box">
+                > INITIALIZING_LEGACY_LEDGER...<br>
+                > SYNCING_WITH_AYESHA_FOUNDATION...<br>
+                > CALCULATING_LONG_TERM_BIAS...<br>
+                > STATUS: SECURE_CAPITAL_LOCKED
+            </div>
+
+            <a href="../" class="btn">DISCONNECT_VAULT</a>
         </div>
-        <a href="../" class="btn" style="border-color:var(--gold); color:var(--gold);">EXIT_VAULT</a>
     </div>
 
     <script>
         function checkPin() {
             const input = document.getElementById('pinInput').value;
-            const msg = document.getElementById('msg');
             if (input === '2000') {
                 document.getElementById('gatekeeper').classList.add('hidden');
-                document.getElementById('content').classList.remove('hidden');
-            } else if (input.length === 4) {
-                msg.innerHTML = "STATUS: ACCESS_DENIED";
-                msg.style.color = "#ff3131";
-                setTimeout(() => { 
-                    document.getElementById('pinInput').value = ''; 
-                    msg.innerHTML = "STATUS: WAITING_FOR_AUTH";
-                    msg.style.color = "#300";
-                }, 1000);
+cat <<EOF > ~/SithandraHub/legacy/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITHANDRA | LEGACY_DASHBOARD</title>
+    <style>
+        :root { --gold: #ffd700; --bg: #050505; --card: #111; }
+        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 450px; }
+        
+        /* Login Screen */
+        #gatekeeper { border: 1px solid #222; padding: 30px; text-align: center; background: #000; }
+        input { background: transparent; border: none; border-bottom: 2px solid #222; color: var(--gold); text-align: center; font-size: 1.5rem; width: 80%; outline: none; margin: 20px 0; letter-spacing: 5px; }
+
+        /* Dashboard Screen */
+        .hidden { display: none; }
+        .dashboard { border: 1px solid var(--gold); padding: 20px; box-shadow: 0 0 20px rgba(255,215,0,0.1); }
+        .header { border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: var(--card); border: 1px solid #222; padding: 15px; font-size: 0.7rem; }
+        .stat-val { display: block; color: var(--gold); font-size: 1.1rem; font-weight: bold; margin-top: 5px; }
+        
+        .log-box { background: #000; border: 1px solid #222; padding: 10px; font-size: 0.65rem; color: #666; height: 80px; overflow: hidden; }
+        .btn { border: 1px solid var(--gold); color: var(--gold); padding: 10px; text-decoration: none; display: block; margin-top: 20px; font-size: 0.8rem; text-align: center; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="gatekeeper" class="container">
+        <div style="font-size: 0.7rem; color: #444; margin-bottom: 10px;">[ LEGACY_NODE_SECURE ]</div>
+        <div style="font-size: 1rem; letter-spacing: 2px;">AUTHENTICATE</div>
+        <input type="password" id="pinInput" maxlength="4" placeholder="****" oninput="checkPin()">
+        <a href="../" style="color:#333; text-decoration:none; font-size:0.6rem;">ABORT_SESSION</a>
+    </div>
+
+    <div id="dashboard" class="container hidden">
+        <div class="dashboard">
+            <div class="header">
+                <span style="color: var(--gold); font-weight: bold; letter-spacing: 2px;">LEGACY_DASH</span>
+                <span style="font-size: 0.6rem; color: #0f0;">● ENCRYPTED</span>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-box">ASSET_CLASS<span class="stat-val">ALPHA_07</span></div>
+                <div class="stat-box">GROWTH_RATE<span class="stat-val">+12.4%</span></div>
+                <div class="stat-box">ALLOCATION<span class="stat-val">SMC_ARRAY</span></div>
+                <div class="stat-box">TRUST_STATUS<span class="stat-val">VERIFIED</span></div>
+            </div>
+
+            <div class="log-box">
+                > INITIALIZING_LEGACY_LEDGER...<br>
+                > SYNCING_WITH_AYESHA_FOUNDATION...<br>
+                > CALCULATING_LONG_TERM_BIAS...<br>
+                > STATUS: SECURE_CAPITAL_LOCKED
+            </div>
+
+            <a href="../" class="btn">DISCONNECT_VAULT</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPin() {
+            const input = document.getElementById('pinInput').value;
+            if (input === '2000') {
+                document.getElementById('gatekeeper').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                document.body.style.alignItems = 'flex-start'; // Adjust for dashboard scroll
+                document.body.style.paddingTop = '40px';
             }
         }
     </script>

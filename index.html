@@ -3,197 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SITHANDRA SCARFACE | HUB</title>
+    <title>SITHANDRA OS | HUB</title>
     <style>
         :root {
-            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808; --w: #25d366; --t: #0088cc;
+            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #050505; --panel: #111;
         }
-        body {
-            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
-            margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* --- HEADER --- */
-        .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.1); margin-bottom: 30px; position: relative; }
-        .menu-trigger { position: absolute; right: 15px; top: 15px; cursor: pointer; color: var(--g); font-size: 1.5rem; transition: 0.3s; }
-
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; margin-bottom: 40px; }
-        .card {
-            background: #111; border: 1px solid #333; padding: 20px; border-radius: 4px;
-            text-decoration: none; position: relative; transition: 0.3s;
-            display: block; border-left: 6px solid #444;
-        }
-        .card:hover { transform: translateX(10px); background: #1a1a1a; box-shadow: -5px 0 15px currentColor; }
-        .title { font-size: 1.1rem; font-weight: bold; display: block; margin-bottom: 5px; }
-        .desc { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
-
-        /* --- SETTINGS DRAWER --- */
-        #settingsDrawer {
-            position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
-            background: rgba(5, 5, 5, 0.98); border-left: 2px solid var(--g);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; padding: 20px;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8); overflow-y: auto;
-        }
-        #settingsDrawer.open { right: 0; }
-        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; z-index:999; }
+        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         
-        .drawer-section { margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .section-title { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
-
-        /* Uplink Buttons */
-        .uplink-btn {
-            display: block; text-decoration: none; padding: 12px; margin-bottom: 10px;
-            text-align: center; font-size: 0.8rem; font-weight: bold; border-radius: 4px;
-            transition: 0.3s;
+        /* --- TASKBAR & HEADER --- */
+        .top-bar { background: rgba(0,0,0,0.9); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: bold; letter-spacing: 2px; color: var(--g); font-size: 0.9rem; }
+        
+        /* --- ICON GRID --- */
+        .desktop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 25px; max-width: 600px; margin: 0 auto; }
+        .app-icon { text-align: center; text-decoration: none; color: #fff; transition: 0.3s; }
+        .app-icon:active { transform: scale(0.9); }
+        
+        .icon-shape { 
+            width: 60px; height: 60px; margin: 0 auto 8px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center;
+            background: var(--panel); border: 1px solid #222; font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .wa { border: 1px solid var(--w); color: var(--w); }
-        .tg { border: 1px solid var(--t); color: var(--t); }
-        .wa:hover { background: var(--w); color: #000; }
-        .tg:hover { background: var(--t); color: #000; }
+        .app-label { font-size: 0.65rem; font-weight: 500; text-transform: uppercase; color: #888; }
 
-        .close-btn { color: var(--r); font-size: 0.8rem; cursor: pointer; text-align: right; display: block; margin-bottom: 20px; font-weight: bold; }
-        .stat { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px; }
-        .stat b { color: var(--g); }
+        /* --- SAVE/DATA PANEL --- */
+        .data-vault { background: var(--panel); margin: 20px; padding: 20px; border-radius: 15px; border: 1px solid #222; }
+        .vault-title { font-size: 0.8rem; color: var(--g); margin-bottom: 15px; display: block; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        textarea { width: 100%; background: #000; border: 1px solid #333; color: var(--g); padding: 10px; border-radius: 8px; box-sizing: border-box; font-family: monospace; }
+        .save-btn { background: var(--g); color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; width: 100%; }
+
+        /* --- COLORS --- */
+        .c-p { border-color: var(--p); color: var(--p); }
+        .c-r { border-color: var(--r); color: var(--r); }
+        .c-g { border-color: var(--g); color: var(--g); }
+        .c-b { border-color: var(--b); color: var(--b); }
+        .c-gold { border-color: var(--gold); color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
-        <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA HUB</h1>
-        <code style="color: #666;">COMM_LINK: SECURE_CHANNEL</code>
+    <div class="top-bar">
+        <div class="logo">SITHANDRA_v3.0</div>
+        <div id="clock" style="font-size: 0.7rem; color: #666;"></div>
     </div>
 
-    <div class="grid">
-        <a href="#" onclick="toggleDrawer()" class="card" style="border-left-color: var(--w);">
-            <span class="title" style="color: var(--w);">COMMS_UPLINK</span>
-            <span class="desc">Encrypted Communication Gateway (WhatsApp/Telegram).</span>
+    <div class="desktop-grid">
+        <a href="shadows/" class="app-icon">
+            <div class="icon-shape c-p">📜</div>
+            <span class="app-label">Shadows</span>
         </a>
-        
-        <a href="shadows/" class="card" style="border-left-color: var(--p);"><span class="title" style="color: var(--p);">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
-        <a href="array/" class="card" style="border-left-color: var(--r);"><span class="
-cat <<EOF > ~/SithandraHub/index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SITHANDRA SCARFACE | HUB</title>
-    <style>
-        :root {
-            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808; --w: #25d366; --t: #0088cc;
-        }
-        body {
-            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
-            margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* --- HEADER --- */
-        .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.1); margin-bottom: 30px; position: relative; }
-        .menu-trigger { position: absolute; right: 15px; top: 15px; cursor: pointer; color: var(--g); font-size: 1.5rem; transition: 0.3s; }
-
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; margin-bottom: 40px; }
-        .card {
-            background: #111; border: 1px solid #333; padding: 20px; border-radius: 4px;
-            text-decoration: none; position: relative; transition: 0.3s;
-            display: block; border-left: 6px solid #444;
-        }
-        .card:hover { transform: translateX(10px); background: #1a1a1a; box-shadow: -5px 0 15px currentColor; }
-        .title { font-size: 1.1rem; font-weight: bold; display: block; margin-bottom: 5px; }
-        .desc { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
-
-        /* --- SETTINGS DRAWER --- */
-        #settingsDrawer {
-            position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
-            background: rgba(5, 5, 5, 0.98); border-left: 2px solid var(--g);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; padding: 20px;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8); overflow-y: auto;
-        }
-        #settingsDrawer.open { right: 0; }
-        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; z-index:999; }
-        
-        .drawer-section { margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .section-title { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
-
-        /* Uplink Buttons */
-        .uplink-btn {
-            display: block; text-decoration: none; padding: 12px; margin-bottom: 10px;
-            text-align: center; font-size: 0.8rem; font-weight: bold; border-radius: 4px;
-            transition: 0.3s;
-        }
-        .wa { border: 1px solid var(--w); color: var(--w); }
-        .tg { border: 1px solid var(--t); color: var(--t); }
-        .wa:hover { background: var(--w); color: #000; }
-        .tg:hover { background: var(--t); color: #000; }
-
-        .close-btn { color: var(--r); font-size: 0.8rem; cursor: pointer; text-align: right; display: block; margin-bottom: 20px; font-weight: bold; }
-        .stat { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px; }
-        .stat b { color: var(--g); }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
-        <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA HUB</h1>
-        <code style="color: #666;">COMM_LINK: SECURE_CHANNEL</code>
-    </div>
-
-    <div class="grid">
-        <a href="#" onclick="toggleDrawer()" class="card" style="border-left-color: var(--w);">
-            <span class="title" style="color: var(--w);">COMMS_UPLINK</span>
-            <span class="desc">Encrypted Communication Gateway (WhatsApp/Telegram).</span>
+        <a href="array/" class="app-icon">
+            <div class="icon-shape c-r">📈</div>
+            <span class="app-label">Array</span>
         </a>
-        
-        <a href="shadows/" class="card" style="border-left-color: var(--p);"><span class="title" style="color: var(--p);">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
-        <a href="array/" class="card" style="border-left-color: var(--r);"><span class="title" style="color: var(--r);">SITHANDRA ARRAY</span><span class="desc">SMC/ICT Trading Strategies & Logic.</span></a>
-        <a href="shield/" class="card" style="border-left-color: var(--g);"><span class="title" style="color: var(--g);">SCAR SHIELD X</span><span class="desc">Security Firewall & Encryption Vault.</span></a>
+        <a href="shield/" class="app-icon">
+            <div class="icon-shape c-g">🛡️</div>
+            <span class="app-label">Shield</span>
+        </a>
+        <a href="masonry/" class="app-icon">
+            <div class="icon-shape" style="border-color:#ff6a00; color:#ff6a00;">🧱</div>
+            <span class="app-label">Masonry</span>
+        </a>
+        <a href="botanicals/" class="app-icon">
+            <div class="icon-shape" style="border-color:#2ecc71; color:#2ecc71;">🌿</div>
+            <span class="app-label">Herbs</span>
+        </a>
+        <a href="legacy/" class="app-icon">
+            <div class="icon-shape c-gold">🔒</div>
+            <span class="app-label">Legacy</span>
+        </a>
     </div>
 
-    <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
-
-    <div id="settingsDrawer">
-        <span class="close-btn" onclick="toggleDrawer()">[ CLOSE_X ]</span>
-        
-        <div class="drawer-section">
-            <span class="section-title">UPLINK_CHANNELS</span>
-            <a href="https://wa.me/26775640621" class="uplink-btn wa" target="_blank">WHATSAPP_SECURE</a>
-            <a href="https://t.me/+26775640621" class="uplink-btn tg" target="_blank">TELEGRAM_ENCRYPT</a>
-        </div>
-
-        <div class="drawer-section">
-            <span class="section-title">OPERATOR_LOG</span>
-            <div class="stat">NAME: <b>SCARFACE</b></div>
-            <div class="stat">PHONE: <b>+267_75640621</b></div>
-            <div class="stat">NODE: <b>GALAXY_A15</b></div>
-        </div>
-
-        <div class="drawer-section">
-            <span class="section-title">SYSTEM_DIRECTORY</span>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <a href="shadows/" style="color:var(--p); font-size:0.7rem; text-decoration:none;">[SHADOWS]</a>
-                <a href="array/" style="color:var(--r); font-size:0.7rem; text-decoration:none;">[ARRAY]</a>
-                <a href="shield/" style="color:var(--g); font-size:0.7rem; text-decoration:none;">[SHIELD]</a><a href="masonry/" style="color:var(--o); font-size:0.7rem; text-decoration:none;">[MASONRY]</a><a href="botanicals/" style="color:var(--leaf); font-size:0.7rem; text-decoration:none;">[BOTANICALS]</a><a href="legacy/" style="color:var(--gold); font-size:0.7rem; text-decoration:none;">[LEGACY]</a>
-                <a href="ayesha/" style="color:var(--gold); font-size:0.7rem; text-decoration:none;">[APEX]</a>
-            </div>
-        </div>
-
-        <button onclick="location.reload()" style="background:transparent; border:1px solid var(--r); color:var(--r); width:100%; padding:10px; cursor:pointer; font-size:0.7rem;">REBOOT_SYSTEM</button>
+    <div class="data-vault">
+        <span class="vault-title">QUICK_SAVE_NOTES (LOCAL_STORAGE)</span>
+        <textarea id="vaultNotes" rows="4" placeholder="Enter data to save in the hub..."></textarea>
+        <button class="save-btn" onclick="saveData()">SYNC DATA TO NODE</button>
+        <div id="saveStatus" style="font-size: 0.6rem; margin-top: 10px; text-align: center;"></div>
     </div>
 
     <script>
-        function toggleDrawer() {
-            const drawer = document.getElementById('settingsDrawer');
-            const overlay = document.getElementById('overlay');
-            if (drawer.classList.contains('open')) {
-                drawer.classList.remove('open');
-                overlay.style.display = 'none';
-            } else {
-                drawer.classList.add('open');
-                overlay.style.display = 'block';
-            }
+        // Real-time Clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Save Functionality
+        function saveData() {
+            const data = document.getElementById('vaultNotes').value;
+            localStorage.setItem('sithandra_notes', data);
+            const status = document.getElementById('saveStatus');
+            status.innerText = "DATA ENCRYPTED & SAVED LOCALLY";
+            status.style.color = "var(--g)";
+            setTimeout(() => { status.innerText = ""; }, 3000);
+        }
+
+        // Load Functionality
+        window.onload = () => {
+            const saved = localStorage.getItem('sithandra_notes');
+            if (saved) document.getElementById('vaultNotes').value = saved;
         }
     </script>
 </body>

@@ -5,55 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OUT OF SHADOWS | SITHANDRA</title>
     <style>
-        :root { --p: #bc13fe; --bg: #050505; --text: #e0e0e0; }
+        :root { --p: #bc13fe; --bg: #050505; --text: #e0e0e0; --card: #111; }
         body {
             background: var(--bg); color: var(--text); font-family: 'Courier New', monospace;
             margin: 0; padding: 20px; line-height: 1.6;
         }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; }
-        .header { border-bottom: 1px solid var(--p); margin-bottom: 30px; padding-bottom: 10px; }
-        h1 { color: var(--p); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
-        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 20px rgba(188,19,254,0.1); }
         
-        .content { margin-bottom: 40px; }
-        .chapter-title { color: var(--p); font-weight: bold; margin-bottom: 15px; display: block; border-left: 3px solid var(--p); padding-left: 10px; }
+        /* Book Cover Aesthetic */
+        .cover-preview {
+            width: 100%; height: 250px; background: linear-gradient(45deg, #000, #1a0026);
+            border: 2px solid var(--p); margin-bottom: 30px; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; box-shadow: inset 0 0 50px #000;
+        }
+        .cover-title { font-size: 1.8rem; font-weight: bold; color: var(--p); letter-spacing: 5px; text-shadow: 0 0 10px var(--p); }
+        .cover-slogan { font-size: 0.7rem; color: #fff; margin-top: 10px; letter-spacing: 2px; border-top: 1px solid #444; padding-top: 5px; }
+
+        .manifesto-section { background: var(--card); border-left: 4px solid var(--p); padding: 20px; margin: 20px 0; font-size: 0.9rem; }
         
-        .terminal-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; color: #bc13fe; font-size: 0.85rem; margin: 20px 0; box-shadow: inset 0 0 10px #000; }
-        
-        .nav-btn { display: inline-block; border: 1px solid var(--p); color: var(--p); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-        .nav-btn:hover { background: var(--p); color: #000; }
-        
-        .status-dot { height: 8px; width: 8px; background-color: var(--p); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--p); }
+        /* Progress Tracker */
+        .progress-container { margin: 30px 0; font-size: 0.8rem; }
+        .bar-bg { background: #222; height: 10px; width: 100%; border-radius: 5px; margin-top: 5px; overflow: hidden; }
+        .bar-fill { background: var(--p); height: 100%; width: 35%; box-shadow: 0 0 10px var(--p); }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--p); color: var(--p); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; margin-top: 20px; }
+        .nav-btn:hover { background: var(--p); color: #000; box-shadow: 0 0 15px var(--p); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>OUT OF SHADOWS</h1>
-            <div class="slogan">RULE THE NARRATIVE.</div>
+        <div class="cover-preview">
+            <div class="cover-title">OUT OF THE<br>SHADOWS</div>
+            <div class="cover-slogan">RULE THE NARRATIVE.</div>
         </div>
 
-        <div class="content">
-            <span class="chapter-title">MANIFESTO_01: THE AWAKENING</span>
-            <p>The world is built on narratives. Most people live inside stories written by others. To step "Out of the Shadows" is to seize the pen and begin writing your own code.</p>
-            
-            <div class="terminal-box">
-                > Initializing Core Philosophy...<br>
-                > Status: Writing Narrative...<br>
-                > Goal: Mental Sovereignty
-            </div>
-
-            <span class="chapter-title">SYSTEM_LOGS: FOUNDATIONAL PILLARS</span>
-            <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                <li><span class="status-dot"></span> Resilience through Architecture</li>
-                <li><span class="status-dot"></span> Strategic Silence</li>
-                <li><span class="status-dot"></span> Mastering the Digital Grid</li>
-            </ul>
+        <div class="manifesto-section">
+            <b style="color:var(--p)">SYSTEM_CORE:</b> "To master the grid, one must first master the self. This manuscript serves as the logic-gate between the perceived world and the programmed reality."
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="../" class="nav-btn">EXIT TO HUB</a>
-            <span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span>
+        <div class="progress-container">
+            <span>MANUSCRIPT_ENCODING: [ 35% COMPLETE ]</span>
+            <div class="bar-bg"><div class="bar-fill"></div></div>
+        </div>
+
+        <h3 style="color:var(--p); border-bottom: 1px solid #222; padding-bottom: 5px;">CHAPTER_LOGS</h3>
+        <ul style="list-style: none; padding: 0; font-size: 0.85rem;">
+            <li>[✓] 01: The Dark Origin</li>
+            <li>[✓] 02: Architectural Resilience</li>
+            <li>[ ] 03: The Digital Sovereign (Encoding...)</li>
+            <li>[ ] 04: Rule the Narrative (Pending...)</li>
+        </ul>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+            <a href="../" class="nav-btn">RETURN TO HUB</a>
+            <span style="font-size: 0.6rem; color: #444;">ID: MATHONSE_WM_2026</span>
         </div>
     </div>
 </body>

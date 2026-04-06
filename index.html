@@ -6,7 +6,7 @@
     <title>SITHANDRA SCARFACE | HUB</title>
     <style>
         :root {
-            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808;
+            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808; --w: #25d366; --t: #0088cc;
         }
         body {
             background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
@@ -14,12 +14,11 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER & TRIGGER --- */
+        /* --- HEADER --- */
         .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.1); margin-bottom: 30px; position: relative; }
         .menu-trigger { position: absolute; right: 15px; top: 15px; cursor: pointer; color: var(--g); font-size: 1.5rem; transition: 0.3s; }
-        .menu-trigger:hover { text-shadow: 0 0 10px var(--g); }
 
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; margin-bottom: 40px; }
         .card {
             background: #111; border: 1px solid #333; padding: 20px; border-radius: 4px;
             text-decoration: none; position: relative; transition: 0.3s;
@@ -42,20 +41,38 @@
         .drawer-section { margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .section-title { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
 
-        /* Directory Links */
-        .dir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .dir-link {
-            text-decoration: none; font-size: 0.7rem; padding: 8px; border: 1px solid #333;
-            color: #fff; text-align: center; transition: 0.3s; background: #111;
+        /* Uplink Buttons */
+        .uplink-btn {
+            display: block; text-decoration: none; padding: 12px; margin-bottom: 10px;
+            text-align: center; font-size: 0.8rem; font-weight: bold; border-radius: 4px;
+            transition: 0.3s;
         }
-        .dir-link:hover { border-color: var(--g); background: rgba(0,255,65,0.1); }
+        .wa { border: 1px solid var(--w); color: var(--w); }
+        .tg { border: 1px solid var(--t); color: var(--t); }
+        .wa:hover { background: var(--w); color: #000; }
+        .tg:hover { background: var(--t); color: #000; }
 
         .close-btn { color: var(--r); font-size: 0.8rem; cursor: pointer; text-align: right; display: block; margin-bottom: 20px; font-weight: bold; }
         .stat { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px; }
         .stat b { color: var(--g); }
+    </style>
+</head>
+<body>
 
-        /* Project Colors */
-        .p-p { color: var(--p); } .p-b { color: var(--b); }
+    <div class="header">
+        <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
+        <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA HUB</h1>
+        <code style="color: #666;">COMM_LINK: SECURE_CHANNEL</code>
+    </div>
+
+    <div class="grid">
+        <a href="#" onclick="toggleDrawer()" class="card" style="border-left-color: var(--w);">
+            <span class="title" style="color: var(--w);">COMMS_UPLINK</span>
+            <span class="desc">Encrypted Communication Gateway (WhatsApp/Telegram).</span>
+        </a>
+        
+        <a href="shadows/" class="card" style="border-left-color: var(--p);"><span class="title" style="color: var(--p);">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
+        <a href="array/" class="card" style="border-left-color: var(--r);"><span class="
 cat <<EOF > ~/SithandraHub/index.html
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +82,7 @@ cat <<EOF > ~/SithandraHub/index.html
     <title>SITHANDRA SCARFACE | HUB</title>
     <style>
         :root {
-            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808;
+            --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #080808; --w: #25d366; --t: #0088cc;
         }
         body {
             background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
@@ -73,12 +90,11 @@ cat <<EOF > ~/SithandraHub/index.html
             overflow-x: hidden;
         }
 
-        /* --- HEADER & TRIGGER --- */
+        /* --- HEADER --- */
         .header { text-align: center; border: 1px solid var(--g); width: 100%; max-width: 500px; padding: 15px; box-shadow: 0 0 15px rgba(0,255,65,0.1); margin-bottom: 30px; position: relative; }
         .menu-trigger { position: absolute; right: 15px; top: 15px; cursor: pointer; color: var(--g); font-size: 1.5rem; transition: 0.3s; }
-        .menu-trigger:hover { text-shadow: 0 0 10px var(--g); }
 
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 500px; margin-bottom: 40px; }
         .card {
             background: #111; border: 1px solid #333; padding: 20px; border-radius: 4px;
             text-decoration: none; position: relative; transition: 0.3s;
@@ -101,20 +117,20 @@ cat <<EOF > ~/SithandraHub/index.html
         .drawer-section { margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .section-title { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
 
-        /* Directory Links */
-        .dir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .dir-link {
-            text-decoration: none; font-size: 0.7rem; padding: 8px; border: 1px solid #333;
-            color: #fff; text-align: center; transition: 0.3s; background: #111;
+        /* Uplink Buttons */
+        .uplink-btn {
+            display: block; text-decoration: none; padding: 12px; margin-bottom: 10px;
+            text-align: center; font-size: 0.8rem; font-weight: bold; border-radius: 4px;
+            transition: 0.3s;
         }
-        .dir-link:hover { border-color: var(--g); background: rgba(0,255,65,0.1); }
+        .wa { border: 1px solid var(--w); color: var(--w); }
+        .tg { border: 1px solid var(--t); color: var(--t); }
+        .wa:hover { background: var(--w); color: #000; }
+        .tg:hover { background: var(--t); color: #000; }
 
         .close-btn { color: var(--r); font-size: 0.8rem; cursor: pointer; text-align: right; display: block; margin-bottom: 20px; font-weight: bold; }
         .stat { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px; }
         .stat b { color: var(--g); }
-
-        /* Project Colors */
-        .p-p { color: var(--p); } .p-b { color: var(--b); } .p-r { color: var(--r); } .p-g { color: var(--g); } .p-gold { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -122,49 +138,49 @@ cat <<EOF > ~/SithandraHub/index.html
     <div class="header">
         <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
         <h1 style="color: var(--g); margin:0; font-size: 1.4rem;">SITHANDRA HUB</h1>
-        <code style="color: #666;">ROOT@PALAPYE:~# ACCESS_GRANTED</code>
+        <code style="color: #666;">COMM_LINK: SECURE_CHANNEL</code>
     </div>
 
     <div class="grid">
-        <a href="shadows/" class="card" style="border-left-color: var(--p);"><span class="title p-p">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
-        <a href="pixels/" class="card" style="border-left-color: var(--b);"><span class="title p-b">SITHANDRA PIXELS</span><span class="desc">Media Studio & Graphic Operations.</span></a>
-        <a href="array/" class="card" style="border-left-color: var(--r);"><span class="title p-r">SITHANDRA ARRAY</span><span class="desc">SMC/ICT Trading Strategies & Logic.</span></a>
-        <a href="shield/" class="card" style="border-left-color: var(--g);"><span class="title p-g">SCAR SHIELD X</span><span class="desc">Security Firewall & Encryption Vault.</span></a>
-        <a href="ayesha/" class="card" style="border-left-color: var(--gold);"><span class="title p-gold">AYESHA APEX</span><span class="desc">Retail Interface & Market Access.</span></a>
+        <a href="#" onclick="toggleDrawer()" class="card" style="border-left-color: var(--w);">
+            <span class="title" style="color: var(--w);">COMMS_UPLINK</span>
+            <span class="desc">Encrypted Communication Gateway (WhatsApp/Telegram).</span>
+        </a>
+        
+        <a href="shadows/" class="card" style="border-left-color: var(--p);"><span class="title" style="color: var(--p);">OUT OF SHADOWS</span><span class="desc">System Firmware & Foundational Philosophy.</span></a>
+        <a href="array/" class="card" style="border-left-color: var(--r);"><span class="title" style="color: var(--r);">SITHANDRA ARRAY</span><span class="desc">SMC/ICT Trading Strategies & Logic.</span></a>
+        <a href="shield/" class="card" style="border-left-color: var(--g);"><span class="title" style="color: var(--g);">SCAR SHIELD X</span><span class="desc">Security Firewall & Encryption Vault.</span></a>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
 
     <div id="settingsDrawer">
-        <span class="close-btn" onclick="toggleDrawer()">[ CLOSE_SYSTEM ]</span>
+        <span class="close-btn" onclick="toggleDrawer()">[ CLOSE_X ]</span>
         
         <div class="drawer-section">
-            <span class="section-title">OPERATOR_INFO</span>
+            <span class="section-title">UPLINK_CHANNELS</span>
+            <a href="https://wa.me/26775640621" class="uplink-btn wa" target="_blank">WHATSAPP_SECURE</a>
+            <a href="https://t.me/+26775640621" class="uplink-btn tg" target="_blank">TELEGRAM_ENCRYPT</a>
+        </div>
+
+        <div class="drawer-section">
+            <span class="section-title">OPERATOR_LOG</span>
             <div class="stat">NAME: <b>SCARFACE</b></div>
+            <div class="stat">PHONE: <b>+267_75640621</b></div>
             <div class="stat">NODE: <b>GALAXY_A15</b></div>
-            <div class="stat">LOC:  <b>BOTSWANA_PAL</b></div>
         </div>
 
         <div class="drawer-section">
             <span class="section-title">SYSTEM_DIRECTORY</span>
-            <div class="dir-grid">
-                <a href="shadows/" class="dir-link p-p">SHADOWS</a>
-                <a href="pixels/" class="dir-link p-b">PIXELS</a>
-                <a href="array/" class="dir-link p-r">ARRAY</a>
-                <a href="shield/" class="dir-link p-g">SHIELD_X</a>
-                <a href="ayesha/" class="dir-link p-gold">APEX_TRD</a>
-                <a href="cortex/" class="dir-link p-p">CORTEX_5</a>
-                <a href="lab/" class="dir-link p-b">QUANT_LAB</a>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <a href="shadows/" style="color:var(--p); font-size:0.7rem; text-decoration:none;">[SHADOWS]</a>
+                <a href="array/" style="color:var(--r); font-size:0.7rem; text-decoration:none;">[ARRAY]</a>
+                <a href="shield/" style="color:var(--g); font-size:0.7rem; text-decoration:none;">[SHIELD]</a>
+                <a href="ayesha/" style="color:var(--gold); font-size:0.7rem; text-decoration:none;">[APEX]</a>
             </div>
         </div>
 
-        <div class="drawer-section">
-            <span class="section-title">CORE_STATUS</span>
-            <div class="stat">ENCRYPTION: <b style="color:var(--g)">ON</b></div>
-            <div class="stat">LATENCY: <b>12ms</b></div>
-        </div>
-
-        <button onclick="location.reload()" style="background:transparent; border:1px solid var(--r); color:var(--r); width:100%; padding:10px; cursor:pointer; font-family:monospace; font-size:0.7rem;">REBOOT_HUB</button>
+        <button onclick="location.reload()" style="background:transparent; border:1px solid var(--r); color:var(--r); width:100%; padding:10px; cursor:pointer; font-size:0.7rem;">REBOOT_SYSTEM</button>
     </div>
 
     <script>

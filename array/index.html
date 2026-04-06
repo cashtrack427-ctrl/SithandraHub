@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARRAY | SITHANDRA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITHANDRA ARRAY | TRADING_CORE</title>
     <style>
-        :root { --r: #ff3131; --bg: #030303; --text: #f0f0f0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(255,49,49,0.1); }
-        .header { border-bottom: 1px solid var(--r); margin-bottom: 30px; padding-bottom: 10px; }
-        h1 { color: var(--r); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
-        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        :root { --r: #ff3131; --bg: #050000; --card: #110000; }
+        body {
+            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #300; padding: 25px; box-shadow: 0 0 30px rgba(255,49,49,0.1); }
         
-        .terminal-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; color: #ff3131; font-size: 0.85rem; margin: 20px 0; box-shadow: inset 0 0 10px #000; overflow-x: scroll;}
-        
-        .nav-btn { display: inline-block; border: 1px solid var(--r); color: var(--r); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-        .nav-btn:hover { background: var(--r); color: #000; }
-        
-        .status-dot { height: 8px; width: 8px; background-color: var(--r); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--r); }
+        .header { border-bottom: 2px solid var(--r); margin-bottom: 20px; padding-bottom: 10px; }
+        h1 { color: var(--r); font-size: 1.4rem; margin: 0; letter-spacing: 2px; }
+        .status { font-size: 0.7rem; color: #ff3131; animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* Strategy Checklist */
+        .checklist { background: var(--card); border: 1px solid #400; padding: 15px; margin: 20px 0; }
+        .check-item { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 8px; color: #ccc; }
+        .check-item:before { content: '[ ]'; margin-right: 10px; color: var(--r); }
+        .checked:before { content: '[X]'; color: #0f0; }
+
+        /* Market Monitor */
+        .monitor { background: #000; border: 1px solid #222; padding: 15px; font-size: 0.8rem; color: var(--r); position: relative; overflow: hidden; }
+        .monitor-line { border-left: 2px solid var(--r); padding-left: 10px; margin-bottom: 5px; }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--r); color: var(--r); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; margin-top: 30px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--r); color: #000; box-shadow: 0 0 15px var(--r); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><h1>SITHANDRA ARRAY</h1><div class="slogan">LOGIC_KERNEL & TRADING STRATEGIES.</div></div>
-        <p>The core logic engine of the Sithandra system, specializing in deploying SMC/ICT Institutional Price Action models.</p>
-        
-        <div class="terminal-box">
-            > Initializing Logic Engine v1.0<br>
-            > Tracking Asset Class: XAUUSD<br>
-            > Status: Market Structure Shift detected...<br>
-            > Running Strategy: Array_MSS_FvG_V1
+        <div class="header">
+            <h1>SITHANDRA ARRAY</h1>
+            <div class="status">● SYSTEM_LIVE | ASSET: XAUUSD / US30</div>
         </div>
 
-        <p>> FOUNDATIONAL DATA STRUCTURES: SMC, ICT, Liquidity Grabs.</p>
+        <div class="monitor">
+            <div class="monitor-line">> SCANNING FOR LIQUIDITY...</div>
+            <div class="monitor-line">> BIAS: INSTITUTIONAL_ORDER_FLOW</div>
+            <div class="monitor-line">> TIME_ZONE: BOTSWANA_LOCAL</div>
+        </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+        <h3 style="color:var(--r); font-size: 0.9rem; margin-top: 25px;">[ STRATEGY_CHECKLIST ]</h3>
+        <div class="checklist">
+            <div class="check-item checked">Identify Draw on Liquidity</div>
+            <div class="check-item">Wait for Liquidity Sweep</div>
+            <div class="check-item">Market Structure Shift (MSS)</div>
+            <div class="check-item">Fair Value Gap (FVG) Entry</div>
+            <div class="check-item">Target: External Liquidity</div>
+        </div>
+
+        <p style="font-size: 0.75rem; color: #666; border-top: 1px solid #200; padding-top: 15px;">
+            "Precision over Prediction. The Array identifies where the money moves, not where it hopes to go."
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="../" class="nav-btn">EXIT_TERMINAL</a>
+            <span style="font-size: 0.6rem; color: #400;">CORE: SMC_ICT_LOGIC</span>
+        </div>
     </div>
 </body>
 </html>

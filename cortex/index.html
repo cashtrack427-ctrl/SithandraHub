@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORTEX 5 | SITHANDRA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX 5 | NEURAL_HUB</title>
     <style>
-        :root { --p: #bc13fe; --bg: #030303; --text: #f0f0f0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(188,19,254,0.1); }
-        .header { border-bottom: 1px solid var(--p); margin-bottom: 30px; padding-bottom: 10px; }
-        h1 { color: var(--p); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
-        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        :root { --p: #bc13fe; --bg: #050505; --card: #0a0a0a; }
+        body {
+            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 25px; box-shadow: 0 0 30px rgba(188,19,254,0.1); }
         
-        .cortex-interface { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; color: #bc13fe; font-size: 0.85rem; margin: 20px 0; box-shadow: inset 0 0 10px #000; position: relative; }
-        .loader { height: 3px; background: rgba(188,19,254,0.1); width: 100%; margin: 10px 0; position: relative; overflow: hidden;}
-        .loader-bar { height: 100%; background: #bc13fe; width: 65%; box-shadow: 0 0 10px #bc13fe;}
+        .header { border-bottom: 2px solid var(--p); margin-bottom: 30px; padding-bottom: 10px; }
+        h1 { color: var(--p); font-size: 1.4rem; margin: 0; letter-spacing: 4px; }
 
-        .nav-btn { display: inline-block; border: 1px solid var(--p); color: var(--p); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-        .nav-btn:hover { background: var(--p); color: #000; }
-        
-        .status-dot { height: 8px; width: 8px; background-color: var(--p); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--p); }
+        /* Neural Status */
+        .neural-net { background: var(--card); border: 1px solid #1a1a1a; padding: 15px; margin-bottom: 25px; position: relative; }
+        .node { display: inline-block; width: 10px; height: 10px; background: var(--p); border-radius: 50%; margin-right: 5px; box-shadow: 0 0 8px var(--p); }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+
+        /* AI Logic Logs */
+        .logic-log { background: #000; border: 1px solid #111; padding: 15px; font-size: 0.75rem; color: #aaa; height: 100px; overflow-y: hidden; }
+        .log-line { border-left: 2px solid var(--p); padding-left: 10px; margin-bottom: 5px; }
+
+        .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .module { border: 1px solid #222; padding: 10px; font-size: 0.7rem; text-align: center; color: var(--p); }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--p); color: var(--p); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; margin-top: 30px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--p); color: #000; box-shadow: 0 0 15px var(--p); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><h1>SITHANDRA CORTEX 5</h1><div class="slogan">AI & LOGIC_AI INTEGRATION. EST 2026.</div></div>
-        <p>The neural hub of the Sithandra network, Cortex 5 manages automation kernels, AI integration, and complex decision-making logic.</p>
-        
-        <div class="cortex-interface">
-            > Initializing CORTEX v5.1...<br>
-            > Synchronizing Neural Net... [ 65% ]<br>
-            <div class="loader"><div class="loader-bar"></div></div>
-            > Loading Module: Market_AI_Analysis
+        <div class="header">
+            <h1>SITHANDRA CORTEX 5</h1>
+            <div style="font-size:0.6rem; color:#666;">COGNITIVE_AUTOMATION_KERNEL</div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+        <div class="neural-net">
+            <span style="font-size: 0.8rem;">[ NEURAL_LINK: <span class="pulse" style="color:var(--p)">ACTIVE</span> ]</span>
+            <div style="margin-top:10px;">
+                <div class="node pulse"></div><div class="node"></div><div class="node pulse"></div><div class="node"></div>
+            </div>
+        </div>
+
+        <div class="logic-log">
+            <div class="log-line">> SYNCING_WITH_ARRAY_DATABASE...</div>
+            <div class="log-line">> ANALYZING_MARKET_SENTIMENT...</div>
+            <div class="log-line">> OPTIMIZING_SCAR_SHIELD_V4...</div>
+            <div class="log-line">> CORTEX_AI: ONLINE</div>
+        </div>
+
+        <div class="module-grid">
+            <div class="module">NLP_PROCESSOR</div>
+            <div class="module">PREDICTIVE_MODELS</div>
+            <div class="module">AUTO_DEPLOYMENT</div>
+            <div class="module">LOGIC_GATE_V5</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="../" class="nav-btn">EXIT_CORTEX</a>
+            <span style="font-size: 0.6rem; color: #333; margin-top:30px;">BOTSWANA_AI_NODE: 05</span>
+        </div>
     </div>
 </body>
 </html>

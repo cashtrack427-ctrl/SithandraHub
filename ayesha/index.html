@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYESHA APEX | SITHANDRA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYESHA APEX | INSTITUTIONAL</title>
     <style>
-        :root { --gold: #ffd700; --bg: #030303; --text: #f0f0f0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(255,215,0,0.1); }
-        .header { border-bottom: 1px solid var(--gold); margin-bottom: 30px; padding-bottom: 10px; }
-        h1 { color: var(--gold); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
-        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        :root { --gold: #ffd700; --bg: #0a0a0a; --card: #151515; }
+        body {
+            background: var(--bg); color: #fff; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #333; padding: 25px; box-shadow: 0 0 25px rgba(255,215,0,0.05); }
         
-        .status-bar { border: 1px solid #1a1a1a; background: #0a0a0a; color: #ffd700; padding: 15px; font-size: 0.9rem; margin: 30px 0; border-radius: 3px;}
+        .header { border-bottom: 1px solid var(--gold); margin-bottom: 25px; padding-bottom: 10px; text-align: center; }
+        h1 { color: var(--gold); font-size: 1.4rem; margin: 0; letter-spacing: 3px; }
+        .reg-status { font-size: 0.6rem; color: #888; margin-top: 5px; }
 
-        .nav-btn { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
-        .nav-btn:hover { background: var(--gold); color: #000; }
-        
-        .status-dot { height: 8px; width: 8px; background-color: var(--gold); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--gold); }
+        /* Market Status Bar */
+        .status-bar { 
+            background: var(--card); border: 1px solid #222; padding: 12px; 
+            display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Objectives Section */
+        .objectives { background: #000; border-left: 3px solid var(--gold); padding: 15px; margin: 20px 0; }
+        .obj-item { font-size: 0.8rem; margin-bottom: 10px; color: #ddd; }
+        .obj-item b { color: var(--gold); }
+
+        .nav-btn { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; margin-top: 30px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><h1>AYESHA APEX TRADING</h1><div class="slogan">MARKET ACCESS PORTAL. EST 2025.</div></div>
-        <p>Ayesha Apex provides a streamlined retail interface to standard financial markets, built to complement the Sithandra Array logic kernel.</p>
-        
-        <div class="status-bar">
-            > Access Status: [ GRANTED ]<br>
-            > Account Type: Instituational_Sub<br>
-            > Markets: SPOT_FX, METAL_CFD (XAU)
+        <div class="header">
+            <h1>AYESHA APEX TRADING</h1>
+            <div class="reg-status">REGISTRATION_NODE: BOTSWANA (PTY) LTD</div>
         </div>
 
-        <p>> SYNC STATUS: Connected to Sithandra Array Logic Core.</p>
+        <div class="status-bar">
+            <span>● MARKET_LIVE</span>
+            <span>XAUUSD: CONNECTED</span>
+            <span>LATENCY: 14ms</span>
+        </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+        <p style="font-size: 0.85rem; color: #aaa; text-align: center;">"Providing elite market access and financial liquidity solutions through the Sithandra ecosystem."</p>
+
+        <div class="objectives">
+            <div class="obj-item"><b>01_MISSION:</b> Bridge the gap between retail and institutional trading environments.</div>
+            <div class="obj-item"><b>02_STRATEGY:</b> Deploy proprietary "Sithandra Array" algorithms for capital growth.</div>
+            <div class="obj-item"><b>03_FUTURE:</b> Full integration with Cortex AI for automated market research.</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="../" class="nav-btn">EXIT_PORTAL</a>
+            <span style="font-size: 0.6rem; color: #444; margin-top:30px;">APEX_TERMINAL_V1.0</span>
+        </div>
     </div>
 </body>
 </html>

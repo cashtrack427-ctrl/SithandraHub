@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html>
-<body style="background:#000; color:#fff; font-family:monospace; padding:20px;">
-  <h1 style="color:#0f0;">SHIELD SYSTEM</h1>
-  <p>> Status: Directory Initialized</p>
-  <p>> Files: Pending Upload...</p>
-  <br>
-  <a href="../" style="color:#0077ff;">[ BACK TO HUB ]</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIELD X | SITHANDRA</title>
+    <style>
+        :root { --g: #00ff41; --bg: #030303; --text: #f0f0f0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(0,255,65,0.1); }
+        .header { border-bottom: 1px solid var(--g); margin-bottom: 30px; padding-bottom: 10px; }
+        h1 { color: var(--g); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
+        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        
+        .vault-input { width: 100%; border: 1px solid #1a1a1a; background: #0a0a0a; color: #00ff41; padding: 15px; font-family: monospace; font-size: 1.1rem; text-align: center; margin: 30px 0; border-radius: 3px; box-sizing: border-box;}
+        .vault-input:focus { border-color: #00ff41; box-shadow: 0 0 10px rgba(0,255,65,0.2); outline: none;}
+
+        .nav-btn { display: inline-block; border: 1px solid var(--g); color: var(--g); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
+        .nav-btn:hover { background: var(--g); color: #000; }
+        
+        .status-dot { height: 8px; width: 8px; background-color: var(--g); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--g); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>SCAR SHIELD X</h1><div class="slogan">MOBILE SECURITY & ENCRYPTION.</div></div>
+        <p>Your data requires the highest level of security. Scar Shield X provides advanced encryption, vault solutions, and mobile security tools for your mobile platform.</p>
+        
+        <p style="text-align: center; color: #888;">> [ SECURE VAULT ACCESS ]</p>
+        <input type="password" class="vault-input" placeholder="PASSKEY_REQUIRED">
+
+        <p>> STATUS: ACTIVE SHIELDING | Firewall: ON | Encryption: AES-256</p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+    </div>
 </body>
 </html>

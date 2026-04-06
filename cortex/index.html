@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html>
-<body style="background:#000; color:#fff; font-family:monospace; padding:20px;">
-  <h1 style="color:#0f0;">CORTEX SYSTEM</h1>
-  <p>> Status: Directory Initialized</p>
-  <p>> Files: Pending Upload...</p>
-  <br>
-  <a href="../" style="color:#0077ff;">[ BACK TO HUB ]</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX 5 | SITHANDRA</title>
+    <style>
+        :root { --p: #bc13fe; --bg: #030303; --text: #f0f0f0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #222; padding: 30px; position: relative; box-shadow: 0 0 15px rgba(188,19,254,0.1); }
+        .header { border-bottom: 1px solid var(--p); margin-bottom: 30px; padding-bottom: 10px; }
+        h1 { color: var(--p); font-size: 1.5rem; margin: 0; letter-spacing: 3px; }
+        .slogan { font-style: italic; color: #888; font-size: 0.9rem; margin-top: 5px; }
+        
+        .cortex-interface { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; color: #bc13fe; font-size: 0.85rem; margin: 20px 0; box-shadow: inset 0 0 10px #000; position: relative; }
+        .loader { height: 3px; background: rgba(188,19,254,0.1); width: 100%; margin: 10px 0; position: relative; overflow: hidden;}
+        .loader-bar { height: 100%; background: #bc13fe; width: 65%; box-shadow: 0 0 10px #bc13fe;}
+
+        .nav-btn { display: inline-block; border: 1px solid var(--p); color: var(--p); padding: 10px 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
+        .nav-btn:hover { background: var(--p); color: #000; }
+        
+        .status-dot { height: 8px; width: 8px; background-color: var(--p); border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 5px var(--p); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>SITHANDRA CORTEX 5</h1><div class="slogan">AI & LOGIC_AI INTEGRATION. EST 2026.</div></div>
+        <p>The neural hub of the Sithandra network, Cortex 5 manages automation kernels, AI integration, and complex decision-making logic.</p>
+        
+        <div class="cortex-interface">
+            > Initializing CORTEX v5.1...<br>
+            > Synchronizing Neural Net... [ 65% ]<br>
+            <div class="loader"><div class="loader-bar"></div></div>
+            > Loading Module: Market_AI_Analysis
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;"><a href="../" class="nav-btn">BACK TO HUB</a><span style="font-size: 0.7rem; color: #444;">COPYRIGHT © 2026 SITHANDRA</span></div>
+    </div>
 </body>
 </html>

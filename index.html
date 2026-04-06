@@ -3,109 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SITHANDRA OS | HUB</title>
+    <title>SITHANDRA SCARFACE</title>
     <style>
         :root {
             --g: #00ff41; --b: #0077ff; --r: #ff3131; --p: #bc13fe; --gold: #ffd700; --bg: #050505; --panel: #111;
         }
-        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         
-        /* --- TASKBAR & HEADER --- */
-        .top-bar { background: rgba(0,0,0,0.9); border-bottom: 1px solid #222; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo { font-weight: bold; letter-spacing: 2px; color: var(--g); font-size: 0.9rem; }
-        
-        /* --- ICON GRID --- */
-        .desktop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 25px; max-width: 600px; margin: 0 auto; }
-        .app-icon { text-align: center; text-decoration: none; color: #fff; transition: 0.3s; }
-        .app-icon:active { transform: scale(0.9); }
-        
-        .icon-shape { 
-            width: 60px; height: 60px; margin: 0 auto 8px; border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center;
-            background: var(--panel); border: 1px solid #222; font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        /* --- BIG HEADER --- */
+        .header { 
+            padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid #222; 
+            background: linear-gradient(to bottom, #000, var(--bg));
         }
-        .app-label { font-size: 0.65rem; font-weight: 500; text-transform: uppercase; color: #888; }
+        .header h1 { 
+            color: var(--g); font-size: 1.8rem; margin: 0; letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0,255,65,0.4);
+        }
+        .menu-trigger { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--g); cursor: pointer; }
 
-        /* --- SAVE/DATA PANEL --- */
-        .data-vault { background: var(--panel); margin: 20px; padding: 20px; border-radius: 15px; border: 1px solid #222; }
-        .vault-title { font-size: 0.8rem; color: var(--g); margin-bottom: 15px; display: block; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        /* --- DESKTOP GRID --- */
+        .desktop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 25px; max-width: 500px; margin: 0 auto; }
+        .app-icon { text-align: center; text-decoration: none; color: #fff; }
+        .icon-shape { 
+            width: 65px; height: 65px; margin: 0 auto 8px; border-radius: 15px; 
+            display: flex; align-items: center; justify-content: center;
+            background: var(--panel); border: 1px solid #333; font-size: 1.8rem;
+        }
+        .app-label { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #666; letter-spacing: 1px; }
+
+        /* --- SETTINGS DRAWER --- */
+        #drawer {
+            position: fixed; top: 0; right: -300px; width: 280px; height: 100%;
+            background: rgba(10,10,10,0.98); border-left: 2px solid var(--g);
+            transition: 0.4s; z-index: 1000; padding: 30px 20px; box-shadow: -10px 0 30px #000;
+        }
+        #drawer.open { right: 0; }
+        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; z-index:999; }
+        .uplink-btn { display: block; padding: 12px; margin: 10px 0; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
+
+        /* --- FILE SYSTEM --- */
+        .vault { background: var(--panel); margin: 0 20px 20px; padding: 20px; border-radius: 15px; border: 1px solid #222; }
+        .file-input { background: #000; border: 1px dashed var(--g); padding: 15px; width: 100%; color: var(--g); font-size: 0.7rem; cursor: pointer; margin-bottom: 10px; box-sizing: border-box; text-align: center; }
         textarea { width: 100%; background: #000; border: 1px solid #333; color: var(--g); padding: 10px; border-radius: 8px; box-sizing: border-box; font-family: monospace; }
-        .save-btn { background: var(--g); color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; width: 100%; }
-
-        /* --- COLORS --- */
-        .c-p { border-color: var(--p); color: var(--p); }
-        .c-r { border-color: var(--r); color: var(--r); }
-        .c-g { border-color: var(--g); color: var(--g); }
-        .c-b { border-color: var(--b); color: var(--b); }
-        .c-gold { border-color: var(--gold); color: var(--gold); }
+        .save-btn { background: var(--g); color: #000; border: none; padding: 15px; border-radius: 8px; font-weight: bold; margin-top: 10px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="logo">SITHANDRA_v3.0</div>
-        <div id="clock" style="font-size: 0.7rem; color: #666;"></div>
+    <div class="menu-trigger" onclick="toggleDrawer()">[≡]</div>
+
+    <div class="header">
+        <h1>SITHANDRA SCARFACE</h1>
+        <div id="clock" style="color: #444; font-size: 0.7rem; margin-top: 5px; font-family: monospace;"></div>
     </div>
 
     <div class="desktop-grid">
-        <a href="shadows/" class="app-icon">
-            <div class="icon-shape c-p">📜</div>
-            <span class="app-label">Shadows</span>
-        </a>
-        <a href="array/" class="app-icon">
-            <div class="icon-shape c-r">📈</div>
-            <span class="app-label">Array</span>
-        </a>
-        <a href="shield/" class="app-icon">
-            <div class="icon-shape c-g">🛡️</div>
-            <span class="app-label">Shield</span>
-        </a>
-        <a href="masonry/" class="app-icon">
-            <div class="icon-shape" style="border-color:#ff6a00; color:#ff6a00;">🧱</div>
-            <span class="app-label">Masonry</span>
-        </a>
-        <a href="botanicals/" class="app-icon">
-            <div class="icon-shape" style="border-color:#2ecc71; color:#2ecc71;">🌿</div>
-            <span class="app-label">Herbs</span>
-        </a>
-        <a href="legacy/" class="app-icon">
-            <div class="icon-shape c-gold">🔒</div>
-            <span class="app-label">Legacy</span>
-        </a>
+        <a href="shadows/" class="app-icon"><div class="icon-shape" style="border-color:var(--p)">📜</div><span class="app-label">Shadows</span></a>
+        <a href="array/" class="app-icon"><div class="icon-shape" style="border-color:var(--r)">📈</div><span class="app-label">Array</span></a>
+        <a href="shield/" class="app-icon"><div class="icon-shape" style="border-color:var(--g)">🛡️</div><span class="app-label">Shield</span></a>
+        <a href="masonry/" class="app-icon"><div class="icon-shape" style="border-color:#ff6a00">🧱</div><span class="app-label">Masonry</span></a>
+        <a href="botanicals/" class="app-icon"><div class="icon-shape" style="border-color:#2ecc71">🌿</div><span class="app-label">Botanicals</span></a>
+        <a href="legacy/" class="app-icon"><div class="icon-shape" style="border-color:var(--gold)">🔒</div><span class="app-label">Legacy</span></a>
     </div>
 
-    <div class="data-vault">
-        <span class="vault-title">QUICK_SAVE_NOTES (LOCAL_STORAGE)</span>
-        <textarea id="vaultNotes" rows="4" placeholder="Enter data to save in the hub..."></textarea>
+    <div class="vault">
+        <span style="font-size:0.7rem; color:var(--g); display:block; margin-bottom:10px;">SYSTEM_UPLINK: PHONE_STORAGE</span>
+        <input type="file" id="fileSelector" class="file-input" onchange="loadFile(event)">
+        <textarea id="vaultNotes" rows="4" placeholder="Encrypted notes..."></textarea>
         <button class="save-btn" onclick="saveData()">SYNC DATA TO NODE</button>
-        <div id="saveStatus" style="font-size: 0.6rem; margin-top: 10px; text-align: center;"></div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
+    <div id="drawer">
+        <h3 style="color:var(--g); border-bottom:1px solid #222; padding-bottom:10px; font-size:0.9rem;">COMM_CHANNELS</h3>
+        <a href="https://wa.me/26775640621" class="uplink-btn" style="background:#25d366; color:white;">WHATSAPP</a>
+        <a href="https://t.me/+26775640621" class="uplink-btn" style="background:#0088cc; color:white;">TELEGRAM</a>
+        <div style="margin-top:40px; font-size:0.6rem; color:#444;">
+            OPERATOR: SCARFACE<br>
+            DEVICE: GALAXY_A15<br>
+            NODE: PALAPYE_BW
+        </div>
+        <button onclick="location.reload()" class="save-btn" style="background:transparent; color:var(--r); border:1px solid var(--r); margin-top:30px;">REBOOT</button>
     </div>
 
     <script>
-        // Real-time Clock
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').innerText = now.toLocaleTimeString();
+        function toggleDrawer() {
+            document.getElementById('drawer').classList.toggle('open');
+            document.getElementById('overlay').style.display = document.getElementById('drawer').classList.contains('open') ? 'block' : 'none';
         }
-        setInterval(updateClock, 1000);
-        updateClock();
 
-        // Save Functionality
+        function loadFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('vaultNotes').value = "FILE_READY: " + file.name + " (" + file.size + " bytes)";
+            }
+        }
+
         function saveData() {
-            const data = document.getElementById('vaultNotes').value;
-            localStorage.setItem('sithandra_notes', data);
-            const status = document.getElementById('saveStatus');
-            status.innerText = "DATA ENCRYPTED & SAVED LOCALLY";
-            status.style.color = "var(--g)";
-            setTimeout(() => { status.innerText = ""; }, 3000);
+            localStorage.setItem('sithandra_notes', document.getElementById('vaultNotes').value);
+            alert("DATA SYNCED TO GALAXY A15 STORAGE");
         }
 
-        // Load Functionality
         window.onload = () => {
             const saved = localStorage.getItem('sithandra_notes');
             if (saved) document.getElementById('vaultNotes').value = saved;
-        }
+            setInterval(() => {
+                document.getElementById('clock').innerText = new Date().toLocaleString();
+            }, 1000);
+        };
     </script>
 </body>
 </html>
